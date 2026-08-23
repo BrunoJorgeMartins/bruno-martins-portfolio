@@ -5,6 +5,8 @@
 import { FormEvent, useMemo, useState } from "react";
 import "@/portfolio.css";
 import "@/dossier-refinement.css";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { startLogin } from "@/const";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -15,6 +17,7 @@ import {
   Database,
   Download,
   Github,
+  FolderArchive,
   Linkedin,
   Mail,
   Menu,
@@ -42,6 +45,13 @@ const filters = ["Todos", "Full Stack", "Back-end", "Base de Dados", "Sistemas E
 const toastPlaceholder = (label: string) => toast.info(`${label}: adicionar ligação real antes de publicar.`);
 
 export default function Home() {
+  // The useAuth hook provides authentication state.
+  // To implement login/logout, call logout(), or start login from an event
+  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
+  // startLogin() during render (no href={startLogin()}) — it mints a one-time
+  // nonce cookie and must run only at the moment of navigation.
+  const { isAuthenticated } = useAuth();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Todos");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -86,7 +96,7 @@ export default function Home() {
             {navItems.map(([label, href]) => <a href={href} key={href}>{label}</a>)}
           </nav>
 
-          <button className="header-cv" onClick={() => toastPlaceholder("Currículo")}>CV <Download aria-hidden="true" /></button>
+          <button className="header-cv" onClick={() => isAuthenticated ? window.location.assign("/biblioteca") : startLogin()}>FICHEIROS <FolderArchive aria-hidden="true" /></button>
           <button className="mobile-menu-button" onClick={() => setMenuOpen((value) => !value)} aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen}>
             {menuOpen ? <X /> : <Menu />}
           </button>
