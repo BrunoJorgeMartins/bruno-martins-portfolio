@@ -13,3 +13,4 @@
 - [ ] Investigar o erro 403 no início de sessão da Biblioteca de Ficheiros.
 - [ ] Corrigir o fluxo de autenticação e validar o acesso privado.
 - [ ] Salvar e publicar a versão atualizada.
+- [ ] Corrigir a publicação do domínio ativo para servir a versão full-stack e a rota `/biblioteca`.
