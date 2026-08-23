@@ -1,3 +1,5 @@
+/** Arquivo Técnico Editorial: aplicação de uma única página em tema claro e profissional. */
+
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -28,7 +30,6 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
-        // switchable
       >
         <TooltipProvider>
           <Toaster />

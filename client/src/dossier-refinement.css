@@ -1,0 +1,26 @@
+/**
+ * Arquivo Técnico Editorial: reforço de artefactos de sistema e ritmo de dossier.
+ * O azul-sinal é reservado a referências, estados e pontos de decisão.
+ */
+
+.brand img { width: 38px; height: 38px; }
+.hero-stamp img { width: 46px; height: 46px; object-fit: contain; }
+
+.project-image { height: 230px; position: relative; overflow: hidden; background: #dfe7ea; }
+.project-image::after { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(18,32,43,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(18,32,43,.1) 1px, transparent 1px); background-size: 16px 16px; }
+.project-image > span { position: absolute; z-index: 2; top: 1rem; left: 1rem; width: 38px; height: 38px; display: grid; place-items: center; background: #12202b; color: #fff; font: 500 .7rem "IBM Plex Mono", monospace; }
+.project-artifact { --artifact: #146cff; background: #dbe8ff; }
+.artifact-meta { position: absolute; z-index: 1; top: 1.1rem; right: 1rem; display: grid; gap: .25rem; text-align: right; font: 500 .5rem/1.2 "IBM Plex Mono", monospace; letter-spacing: .08em; color: #53616b; }
+.artifact-meta b { color: var(--artifact); }.artifact-meta em { font-style: normal; }
+.artifact-nodes { position: absolute; z-index: 1; left: 24%; top: 31%; width: 56%; height: 40%; border: 1px solid rgba(18,32,43,.4); clip-path: polygon(0 44%, 48% 44%, 48% 0, 52% 0, 52% 44%, 100% 44%, 100% 56%, 52% 56%, 52% 100%, 48% 100%, 48% 56%, 0 56%); }
+.artifact-nodes i { position: absolute; width: 11px; height: 11px; background: #f5f3ee; border: 2px solid var(--artifact); border-radius: 50%; }.artifact-nodes i:nth-child(1) { left: -5px; top: calc(50% - 5px); }.artifact-nodes i:nth-child(2) { left: calc(50% - 5px); top: -5px; }.artifact-nodes i:nth-child(3) { right: -5px; top: calc(50% - 5px); }.artifact-nodes i:nth-child(4) { left: calc(50% - 5px); bottom: -5px; }.artifact-nodes i:nth-child(5) { left: calc(50% - 5px); top: calc(50% - 5px); background: var(--artifact); }
+.artifact-note { position: absolute; z-index: 1; left: 1rem; bottom: 1rem; color: #12202b; font: 600 .62rem/1.35 "IBM Plex Mono", monospace; letter-spacing: .05em; max-width: 160px; }.artifact-bars { position: absolute; z-index: 1; right: 1rem; bottom: 1rem; width: 82px; height: 42px; display: flex; align-items: end; gap: 4px; border-left: 1px solid rgba(18,32,43,.45); border-bottom: 1px solid rgba(18,32,43,.45); padding: 4px; }.artifact-bars i { flex: 1; background: var(--artifact); opacity: .9; }.artifact-bars i:nth-child(1) { height: 32%; }.artifact-bars i:nth-child(2) { height: 77%; }.artifact-bars i:nth-child(3) { height: 48%; }.artifact-bars i:nth-child(4) { height: 100%; }
+.artifact-escolar { --artifact: #235b80; background: #e5eef2; }.artifact-escolar .artifact-nodes { border-radius: 45%; clip-path: none; }.artifact-escolar .artifact-nodes i:nth-child(5) { width: 34px; height: 34px; left: calc(50% - 17px); top: calc(50% - 17px); border-radius: 0; background: transparent; }
+.artifact-orcamento { --artifact: #4b6f5d; background: #e4eee8; }.artifact-orcamento .artifact-nodes { clip-path: polygon(0 0,100% 0,100% 100%,0 100%); border-left: 0; border-right: 0; }.artifact-orcamento .artifact-nodes i { border-radius: 0; transform: rotate(45deg); }
+.artifact-helpdesk { --artifact: #725a3d; background: #eee7df; }.artifact-helpdesk .artifact-nodes { border-radius: 0 0 48% 48%; clip-path: none; }.artifact-helpdesk .artifact-nodes i { width: 13px; height: 13px; }
+.project-problem, .project-decision { color: #53616b; margin: 0; line-height: 1.55; font-size: .82rem; max-width: 600px; }.project-problem b, .project-decision b { display: block; color: #146cff; font: 500 .55rem "IBM Plex Mono", monospace; letter-spacing: .08em; margin-bottom: .35rem; }.project-decision { border-top: 1px solid #d7d6d0; margin-top: .85rem; padding-top: .85rem; }
+
+.process-section { background: #f5f3ee; border-top: 1px solid #d7d6d0; border-bottom: 1px solid #d7d6d0; }.process-reference { color: #69757d; margin: 1.4rem 0 0; font: 500 .61rem "IBM Plex Mono", monospace; letter-spacing: .1em; }.process-steps { border-top-color: #9abaf2; }.process-steps article { border-bottom-color: #9abaf2; }
+.footer-brand { gap: .75rem; }.footer-brand img { width: 44px; height: 44px; }.footer-brand span { display: flex; flex-direction: column; line-height: .8; letter-spacing: .12em; }.footer-brand b { font: 700 .9rem "Space Grotesk", sans-serif; }.footer-brand em { color: #9cc2ff; margin-top: .32rem; font: 500 .58rem "IBM Plex Mono", monospace; font-style: normal; }
+
+@media (min-width: 1024px) { .process-steps { border-left-color: #9abaf2; }.process-steps article { border-right-color: #9abaf2; } }
