@@ -1,0 +1,16 @@
+@model SectionTitleModel
+
+<div class="section-title @(Model.Dark ? "section-title-dark" : "")">
+    <div class="section-index" aria-hidden="true">
+        <span>@Model.Index</span>
+        <i></i>
+    </div>
+    <div>
+        <p class="eyebrow">@Model.Eyebrow</p>
+        <h2>@Model.Title</h2>
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <p class="section-description">@Model.Description</p>
+        }
+    </div>
+</div>

@@ -1,0 +1,13 @@
+@model int
+@{
+    ViewData["Title"] = Model == 404 ? "Página não encontrada — Bruno Martins" : "Erro — Bruno Martins";
+}
+
+<div class="portfolio-shell">
+    <main class="error-page">
+        <p class="eyebrow">ERRO @Model</p>
+        <h1>@(Model == 404 ? "Esta página não existe." : "Algo correu mal.")</h1>
+        <p>@(Model == 404 ? "O endereço pode estar errado ou a página foi movida." : "Tente novamente dentro de alguns instantes.")</p>
+        <a class="button-primary" href="/">Voltar ao início @Html.Icon("arrow-up-right")</a>
+    </main>
+</div>

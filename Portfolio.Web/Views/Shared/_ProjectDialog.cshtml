@@ -1,0 +1,60 @@
+@model Project
+
+<dialog class="project-dialog" id="dialog-@Model.Id" aria-labelledby="dialog-title-@Model.Id">
+    <button type="button" class="dialog-close" data-close aria-label="Fechar">@Html.Icon("x")</button>
+    <partial name="_Artifact" model="Model" />
+    <div class="project-dialog-status"><span>@Model.Status</span><span>@Model.Number</span></div>
+    <div class="project-dialog-body">
+        <header class="project-dialog-header">
+            <p class="eyebrow">ESTUDO DE CASO · PROJETO DEMONSTRATIVO</p>
+            <h2 id="dialog-title-@Model.Id">@Model.Title</h2>
+            <p class="project-dialog-summary">@Model.Solution</p>
+        </header>
+
+        <div class="project-dialog-cases">
+            <article class="case-note">
+                @Html.Icon("circle-dot-dashed")
+                <h3>Problema</h3>
+                <p>@Model.Problem</p>
+            </article>
+            <article class="case-note">
+                @Html.Icon("code")
+                <h3>Meu papel</h3>
+                <p>@Model.Role</p>
+            </article>
+        </div>
+
+        <div class="project-dialog-grid">
+            <section>
+                <div class="dialog-label">@Html.Icon("check") Funcionalidades prioritárias</div>
+                <ul class="dialog-list">
+                    @foreach (var feature in Model.Features)
+                    {
+                        <li>@feature</li>
+                    }
+                </ul>
+            </section>
+            <section>
+                <div class="dialog-label">@Html.Icon("wrench") Desafios previstos</div>
+                <ul class="dialog-list">
+                    @foreach (var challenge in Model.Challenges)
+                    {
+                        <li>@challenge</li>
+                    }
+                </ul>
+            </section>
+        </div>
+
+        <div class="next-step-note">
+            @Html.Icon("lightbulb")
+            <div><span>PRÓXIMO PASSO</span><p>@Model.NextStep</p></div>
+        </div>
+
+        <div class="project-dialog-tags">
+            @foreach (var technology in Model.Technologies)
+            {
+                <span class="tech-tag">@technology</span>
+            }
+        </div>
+    </div>
+</dialog>
