@@ -25,7 +25,7 @@ pnpm start      # executa o build de produção
 ```
 
 O servidor lê a configuração (base de dados, autenticação, armazenamento) de variáveis de ambiente, que não fazem parte do repositório.
-
+sjkamks 
 ## Estrutura
 
 ```
