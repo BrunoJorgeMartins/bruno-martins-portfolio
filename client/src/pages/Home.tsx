@@ -19,7 +19,6 @@ import {
   Github,
   FolderArchive,
   Linkedin,
-  Mail,
   Menu,
   Network,
   Send,
@@ -242,12 +241,11 @@ export default function Home() {
             <SectionTitle index="06" eyebrow="CONTACTO" title="Vamos conversar sobre o próximo sistema." description="Para oportunidades, colaboração ou discussão de um problema a resolver." tone="dark" />
             <div className="contact-content">
               <div className="contact-direct">
-                <a className="email-link" href="mailto:brunocostamartins0@gmail.com">brunocostamartins0@gmail.com <ArrowUpRight aria-hidden="true" /></a>
+                <a className="email-link" href="https://www.linkedin.com/in/brunomartinssoftwere/" target="_blank" rel="noopener noreferrer">Falar no LinkedIn <ArrowUpRight aria-hidden="true" /></a>
                 <p>Luanda, Viana · Vida Pacífica</p>
                 <div className="contact-socials">
-                  <button onClick={() => toastPlaceholder("GitHub")} aria-label="Adicionar ligação do GitHub"><Github aria-hidden="true" /> GitHub <span>Adicionar ligação</span></button>
-                  <button onClick={() => toastPlaceholder("LinkedIn")} aria-label="Adicionar ligação do LinkedIn"><Linkedin aria-hidden="true" /> LinkedIn <span>Adicionar ligação</span></button>
-                  <a href="mailto:brunocostamartins0@gmail.com"><Mail aria-hidden="true" /> E-mail <span>Enviar mensagem</span></a>
+                  <a href="https://github.com/BrunoJorgeMartins" target="_blank" rel="noopener noreferrer"><Github aria-hidden="true" /> GitHub <span>BrunoJorgeMartins</span></a>
+                  <a href="https://www.linkedin.com/in/brunomartinssoftwere/" target="_blank" rel="noopener noreferrer"><Linkedin aria-hidden="true" /> LinkedIn <span>brunomartinssoftwere</span></a>
                 </div>
               </div>
               <form className="contact-form" onSubmit={handleContact} noValidate>
