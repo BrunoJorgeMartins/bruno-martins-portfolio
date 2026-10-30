@@ -1,0 +1,223 @@
+@model HomeViewModel
+@inject IWebHostEnvironment Env
+@{
+    // O retrato é opcional: coloque a foto em wwwroot/img/portrait.jpg para a mostrar.
+    var hasPortrait = System.IO.File.Exists(System.IO.Path.Combine(Env.WebRootPath, "img", "portrait.jpg"));
+}
+
+<div class="portfolio-shell">
+    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#inicio" aria-label="Bruno Martins — ir para o início">
+                <img src="~/img/mark.svg" alt="" width="38" height="38" />
+                <span><b>BRUNO</b><em>MARTINS</em></span>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navegação principal">
+                @foreach (var item in Model.Nav)
+                {
+                    <a href="@item.Href">@item.Label</a>
+                }
+            </nav>
+
+            <a class="header-cv" href="@PortfolioData.LinkedInUrl" target="_blank" rel="noopener noreferrer">LINKEDIN @Html.Icon("arrow-up-right")</a>
+            <button type="button" class="mobile-menu-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+                @Html.Icon("menu")
+                @Html.Icon("x")
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Navegação mobile" hidden>
+            @foreach (var item in Model.Nav)
+            {
+                <a href="@item.Href">@item.Label @Html.Icon("chevron-right")</a>
+            }
+            <a href="@PortfolioData.LinkedInUrl" target="_blank" rel="noopener noreferrer">LinkedIn @Html.Icon("arrow-up-right")</a>
+        </nav>
+    </header>
+
+    <main id="conteudo">
+        <section class="hero-section" id="inicio">
+            <div class="hero-pattern" aria-hidden="true"></div>
+            <div class="hero-main">
+                <div class="hero-copy">
+                    <p class="hero-availability"><span></span> DISPONÍVEL PARA NOVAS OPORTUNIDADES</p>
+                    <p class="eyebrow">PORTFÓLIO · 2026</p>
+                    <h1>Da regra de negócio à interface que a equipa consegue usar.</h1>
+                    <p class="hero-lead">Sou <strong>Bruno Martins</strong>, Desenvolvedor Full Stack com foco em sistemas web, dados e processos empresariais.</p>
+                    <div class="hero-actions">
+                        <a class="button-primary" href="#projetos">Examinar projetos @Html.Icon("arrow-down-right")</a>
+                        <a class="button-secondary" href="#contacto">Falar comigo @Html.Icon("arrow-up-right")</a>
+                    </div>
+                    <div class="hero-stack" aria-label="Tecnologias em destaque">
+                        <span>C#</span><i></i><span>ASP.NET</span><i></i><span>SQL SERVER</span><i></i><span>JAVASCRIPT</span>
+                    </div>
+                </div>
+
+                <div class="hero-portrait-wrap">
+                    <div class="hero-portrait-meta"><span>PERFIL</span><span>001—BRM</span></div>
+                    <div class="hero-portrait">
+                        @if (hasPortrait)
+                        {
+                            <img src="~/img/portrait.jpg" alt="Retrato profissional de Bruno Martins." />
+                        }
+                        else
+                        {
+                            <div class="portrait-fallback" aria-hidden="true">BM</div>
+                        }
+                        <div class="portrait-caption"><span>BRUNO MARTINS</span><span>DESENVOLVEDOR FULL STACK</span></div>
+                    </div>
+                    <div class="hero-stamp"><img src="~/img/mark.svg" alt="" width="46" height="46" /><span>SISTEMAS<br />COMPLETOS</span></div>
+                </div>
+            </div>
+            <div class="hero-footnote"><span>01</span><p>Soluções empresariais desenhadas para processos claros, dados consistentes e evolução contínua.</p><span class="scroll-prompt">DESLIZE PARA EXPLORAR ↓</span></div>
+        </section>
+
+        <section class="about-section" id="sobre">
+            <div class="content-grid">
+                <partial name="_SectionTitle" model='new SectionTitleModel("01", "SOBRE MIM", "Desenvolvimento orientado ao funcionamento real.", "Tecnologia é útil quando torna o processo mais claro, a informação mais acessível e a decisão mais confiável.")' />
+                <div class="about-content">
+                    <p class="about-statement">Trabalho no desenvolvimento e evolução de sistemas de gestão, combinando análise, modelagem, base de dados, back-end e interface num percurso técnico coerente.</p>
+                    <p>Com experiência em C#, ASP.NET, SQL Server, MySQL e JavaScript, tenho particular interesse em aplicações empresariais com regras de negócio, vários perfis de acesso e informação que precisa de permanecer organizada ao longo do tempo.</p>
+                    <div class="about-facts">
+                        <div><b>4</b><span>ANOS DE EXPERIÊNCIA EM DESENVOLVIMENTO WEB</span></div>
+                        <div><b>2</b><span>FRENTES COMPLEMENTARES: SOFTWARE E SUPORTE TÉCNICO</span></div>
+                    </div>
+                    <a class="text-link" href="#experiencia">Ver percurso profissional @Html.Icon("arrow-up-right")</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section" id="competencias">
+            <div class="content-grid">
+                <partial name="_SectionTitle" model='new SectionTitleModel("02", "COMPETÊNCIAS", "Uma visão completa do sistema.", "Da estrutura dos dados à experiência de quem utiliza a aplicação.", Dark: true)' />
+                <div class="skills-content">
+                    <div class="skill-highlight"><p>FOCO PRINCIPAL</p><strong>C# · ASP.NET · SQL SERVER · JAVASCRIPT</strong></div>
+                    <div class="skill-grid">
+                        @foreach (var group in Model.SkillGroups)
+                        {
+                            <article class="skill-group">
+                                <div class="skill-group-top"><span>@group.Number</span><em>@group.Label</em></div>
+                                <h3>@group.Title</h3>
+                                <div class="skill-tags">
+                                    @foreach (var item in group.Items)
+                                    {
+                                        <span>@item</span>
+                                    }
+                                </div>
+                            </article>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projetos">
+            <div class="projects-header content-grid">
+                <partial name="_SectionTitle" model='new SectionTitleModel("03", "PROJETOS", "Casos para construir, estudar e evoluir.", "Projetos demonstrativos selecionados para aprofundar competências relevantes para sistemas empresariais reais.")' />
+                <div class="projects-note"><span class="status-dot"></span> CONCEITOS E PROJETOS EM DESENVOLVIMENTO · SEM CLIENTES, MÉTRICAS OU LINKS INVENTADOS</div>
+            </div>
+
+            <div class="project-controls">
+                <p>FILTRAR POR ÁREA</p>
+                <div role="group" aria-label="Filtrar projetos">
+                    @foreach (var filter in Model.Filters)
+                    {
+                        <button type="button" class="@(filter == "Todos" ? "is-active" : "")" data-filter="@filter" aria-pressed="@(filter == "Todos" ? "true" : "false")">@filter</button>
+                    }
+                </div>
+            </div>
+
+            <div class="project-list">
+                @foreach (var project in Model.Projects)
+                {
+                    <partial name="_ProjectCard" model="project" />
+                }
+            </div>
+        </section>
+
+        <section class="experience-section" id="experiencia">
+            <div class="content-grid">
+                <partial name="_SectionTitle" model='new SectionTitleModel("04", "EXPERIÊNCIA", "Software, suporte e continuidade operacional.", "Percurso profissional com desenvolvimento de sistemas e apoio à infraestrutura tecnológica.")' />
+                <div class="timeline">
+                    @foreach (var job in Model.Experiences)
+                    {
+                        <article class="timeline-item @(job.IsCurrent ? "current" : "")">
+                            <div class="timeline-date">@job.Date</div>
+                            <div class="timeline-role">
+                                <span class="timeline-mark">@Html.Icon(job.Icon)</span>
+                                <div>
+                                    <p>@job.Company</p>
+                                    <h3>@job.Role</h3>
+                                    <p class="timeline-description">@job.Description</p>
+                                    <div class="inline-tags">
+                                        @foreach (var tag in job.Tags)
+                                        {
+                                            <span>@tag</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section" id="processo">
+            <div class="process-top"><p class="eyebrow">05 · COMO TRABALHO</p><h2>O código é uma parte da solução.<br />O processo vem antes.</h2><p class="process-reference">REF. 05 / MÉTODO DE DESENVOLVIMENTO</p></div>
+            <div class="process-steps">
+                @foreach (var step in Model.ProcessSteps)
+                {
+                    <article><span>@step.Number</span><div><h3>@step.Title</h3><p>@step.Description</p></div>@Html.Icon("chevron-right")</article>
+                }
+            </div>
+        </section>
+
+        <section class="contact-section" id="contacto">
+            <div class="content-grid">
+                <partial name="_SectionTitle" model='new SectionTitleModel("06", "CONTACTO", "Vamos conversar sobre o próximo sistema.", "Para oportunidades, colaboração ou discussão de um problema a resolver.", Dark: true)' />
+                <div class="contact-content">
+                    <div class="contact-direct">
+                        <a class="email-link" href="@PortfolioData.LinkedInUrl" target="_blank" rel="noopener noreferrer">Falar no LinkedIn @Html.Icon("arrow-up-right")</a>
+                        <p>Luanda, Viana · Vida Pacífica</p>
+                        <div class="contact-socials">
+                            <a href="@PortfolioData.GitHubUrl" target="_blank" rel="noopener noreferrer">@Html.Icon("github") GitHub <span>BrunoJorgeMartins</span></a>
+                            <a href="@PortfolioData.LinkedInUrl" target="_blank" rel="noopener noreferrer">@Html.Icon("linkedin") LinkedIn <span>brunomartinssoftwere</span></a>
+                        </div>
+                    </div>
+                    <form class="contact-form" method="post" asp-controller="Home" asp-action="Contact" novalidate>
+                        <div class="form-heading">@Html.Icon("send")<span>FORMULÁRIO PREPARADO PARA INTEGRAÇÃO</span></div>
+                        <div class="form-grid">
+                            <label>Nome<input asp-for="Contact.Name" type="text" placeholder="O seu nome" maxlength="120" /></label>
+                            <label>E-mail<input asp-for="Contact.Email" type="email" placeholder="nome@empresa.com" maxlength="200" /></label>
+                        </div>
+                        <label>Assunto<input asp-for="Contact.Subject" type="text" placeholder="Como posso ajudar?" maxlength="150" /></label>
+                        <label>Mensagem<textarea asp-for="Contact.Message" rows="4" placeholder="Descreva brevemente a oportunidade ou o desafio." maxlength="4000"></textarea></label>
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <p class="form-error" role="alert">Preencha todos os campos e informe um e-mail válido.</p>
+                        }
+                        @if (Model.ContactSuccess)
+                        {
+                            <p class="form-success" role="status">@Html.Icon("circle-check") Mensagem validada. Conecte este formulário a um serviço de envio para ativar o contacto.</p>
+                        }
+                        <button class="button-primary form-submit" type="submit">Validar mensagem @Html.Icon("send")</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand"><img src="~/img/mark.svg" alt="" width="44" height="44" /><span><b>BRUNO</b><em>MARTINS</em></span></div>
+        <p>DESENVOLVEDOR FULL STACK · C# · ASP.NET · SQL SERVER · JAVASCRIPT</p>
+        <span>© @DateTime.Now.Year · PORTFÓLIO PROFISSIONAL</span>
+    </footer>
+
+    @foreach (var project in Model.Projects)
+    {
+        <partial name="_ProjectDialog" model="project" />
+    }
+</div>

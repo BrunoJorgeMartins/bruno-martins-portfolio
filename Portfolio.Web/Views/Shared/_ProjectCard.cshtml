@@ -1,0 +1,18 @@
+@model Project
+
+<article class="project-card" data-categories="@string.Join('|', Model.Categories)">
+    <partial name="_Artifact" model="Model" />
+    <div class="project-card-content">
+        <div class="project-card-top"><p>@Model.Status</p><span>@Model.Categories[0]</span></div>
+        <h3>@Model.ShortTitle</h3>
+        <p class="project-problem"><b>PROBLEMA</b>@Model.Problem</p>
+        <p class="project-decision"><b>DECISÃO</b>@Model.Solution</p>
+        <div class="project-techs">
+            @foreach (var technology in Model.Technologies.Take(4))
+            {
+                <span>@technology</span>
+            }
+        </div>
+        <button type="button" class="project-examine" data-dialog="dialog-@Model.Id">Examinar projeto @Html.Icon("arrow-up-right")</button>
+    </div>
+</article>

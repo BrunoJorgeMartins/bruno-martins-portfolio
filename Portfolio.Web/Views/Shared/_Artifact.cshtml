@@ -1,0 +1,10 @@
+@* Ilustração técnica em CSS puro, única por projeto (cores e formas definidas em site.css). *@
+@model Project
+
+<div class="project-image project-artifact artifact-@Model.Id" role="img" aria-label="Artefacto técnico de referência para @Model.ShortTitle">
+    <span>@Model.Number</span>
+    <div class="artifact-meta"><b>REF. SISTEMA</b><em>ESTRUTURA / FLUXO</em></div>
+    <div class="artifact-nodes"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="artifact-note">@Model.ShortTitle.ToUpperInvariant()</div>
+    <div class="artifact-bars"><i></i><i></i><i></i><i></i></div>
+</div>
